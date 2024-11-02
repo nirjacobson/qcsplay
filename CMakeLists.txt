@@ -101,13 +101,13 @@ set(PROJECT_SOURCES
     dialogs/settings/settingsdialog.cpp
     dialogs/settings/settingsdialog.h
     dialogs/settings/settingsdialog.ui
-    tools/player/player.cpp
-    tools/player/player.h
-    tools/player/player.ui
-    tools/player/playlistitem.cpp
-    tools/player/playlistitem.h
-    tools/player/playlisttablemodel.cpp
-    tools/player/playlisttablemodel.h
+    player/player.cpp
+    player/player.h
+    player/player.ui
+    player/playlistitem.cpp
+    player/playlistitem.h
+    player/playlisttablemodel.cpp
+    player/playlisttablemodel.h
     formats/gd3.cpp
     formats/gd3.h
     application.cpp

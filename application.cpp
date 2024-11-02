@@ -1,5 +1,5 @@
 #include "application.h"
-#include "tools/player/player.h"
+#include "player/player.h"
 
 Application::Application(int &argc, char **argv, int flags)
     : QApplication(argc, argv, flags)

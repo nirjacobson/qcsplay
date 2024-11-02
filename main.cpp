@@ -1,5 +1,5 @@
 #include "application.h"
-#include "tools/player/player.h"
+#include "player/player.h"
 
 int main(int argc, char *argv[])
 {
