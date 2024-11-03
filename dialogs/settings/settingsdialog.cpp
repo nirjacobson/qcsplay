@@ -36,7 +36,7 @@ void SettingsDialog::accepted()
     settings.setValue(QCSPlay::EqualizerTrebleKey, ui->emulationSettingsWidget->treble());
     settings.setValue(QCSPlay::AudioBufferSizeKey, ui->emulationSettingsWidget->audioBufferSize());
     settings.setValue(QCSPlay::ReadBufferSizeKey, ui->emulationSettingsWidget->readBufferSize());
-    settings.setValue(QCSPlay::EmulatorOutputDeviceKey, ui->emulatorOutputDeviceWidget->outputDeviceIndex());
+    settings.setValue(QCSPlay::EmulatorOutputDeviceKey, ui->emulatorOutputDeviceWidget->outputDevice());
 
     emit done();
 

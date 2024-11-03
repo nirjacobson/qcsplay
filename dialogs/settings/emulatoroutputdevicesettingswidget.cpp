@@ -20,7 +20,8 @@ EmulatorOutputDeviceSettingsWidget::EmulatorOutputDeviceSettingsWidget(QWidget *
     QSettings settings(QCSPlay::Organization, QCSPlay::Application);
 #endif
 
-    ui->outputDeviceComboBox->setCurrentIndex(settings.value(QCSPlay::EmulatorOutputDeviceKey, AudioOutput<int16_t>::instance()->defaultDeviceIndex()).toInt());
+    QString outputDevice = settings.value(QCSPlay::EmulatorOutputDeviceKey, QString::fromStdString(AudioOutput<int16_t>::instance()->devices()[AudioOutput<int16_t>::instance()->defaultDeviceIndex()])).toString();
+    ui->outputDeviceComboBox->setCurrentText(outputDevice);
 
 }
 
@@ -29,9 +30,9 @@ EmulatorOutputDeviceSettingsWidget::~EmulatorOutputDeviceSettingsWidget()
     delete ui;
 }
 
-int EmulatorOutputDeviceSettingsWidget::outputDeviceIndex() const
+QString EmulatorOutputDeviceSettingsWidget::outputDevice() const
 {
-    return ui->outputDeviceComboBox->currentIndex();
+    return ui->outputDeviceComboBox->currentText();
 }
 
 void EmulatorOutputDeviceSettingsWidget::doUpdate()
@@ -52,9 +53,17 @@ void EmulatorOutputDeviceSettingsWidget::doUpdate()
     }
     ui->outputDeviceComboBox->addItems(devicesList);
 
+#ifdef Q_OS_WIN
+    QSettings settings(QCSPlay::SettingsFile, QSettings::IniFormat);
+#else
+    QSettings settings(QCSPlay::Organization, QCSPlay::Application);
+#endif
+    QString outputDevice = settings.value(QCSPlay::EmulatorOutputDeviceKey, QString::fromStdString(AudioOutput<int16_t>::instance()->devices()[AudioOutput<int16_t>::instance()->defaultDeviceIndex()])).toString();
+    ui->outputDeviceComboBox->setCurrentText(outputDevice);
+
+    ui->outputDeviceComboBox->blockSignals(false);
+
     if (mustInit) {
         AudioOutput<int16_t>::instance()->destroy();
     }
-
-    ui->outputDeviceComboBox->blockSignals(false);
 }
