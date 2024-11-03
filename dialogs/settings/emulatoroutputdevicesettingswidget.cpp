@@ -39,7 +39,11 @@ void EmulatorOutputDeviceSettingsWidget::doUpdate()
     ui->outputDeviceComboBox->blockSignals(true);
     ui->outputDeviceComboBox->clear();
 
-    AudioOutput<int16_t>::instance()->init();
+    bool mustInit = !AudioOutput<int16_t>::instance()->isInited();
+
+    if (mustInit) {
+        AudioOutput<int16_t>::instance()->init();
+    }
 
     std::vector<std::string> devices = AudioOutput<int16_t>::instance()->devices();
     QStringList devicesList;
@@ -48,7 +52,9 @@ void EmulatorOutputDeviceSettingsWidget::doUpdate()
     }
     ui->outputDeviceComboBox->addItems(devicesList);
 
-    AudioOutput<int16_t>::instance()->destroy();
+    if (mustInit) {
+        AudioOutput<int16_t>::instance()->destroy();
+    }
 
     ui->outputDeviceComboBox->blockSignals(false);
 }

@@ -33,11 +33,6 @@
        <string>Emulator</string>
       </property>
      </item>
-     <item>
-      <property name="text">
-       <string>Chromasound Direct</string>
-      </property>
-     </item>
     </widget>
    </item>
   </layout>

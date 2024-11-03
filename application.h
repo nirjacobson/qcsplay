@@ -5,6 +5,7 @@
 #include <QList>
 #include <QElapsedTimer>
 #include <QUndoStack>
+#include <QProcess>
 
 #include "chromasound/chromasound.h"
 #include "chromasound/chromasound_standin.h"
@@ -25,6 +26,8 @@ class Application : public QApplication
     public:
         Application(int &argc, char **argv, int flags = ApplicationFlags);
         ~Application();
+
+        static bool isRaspberryPi();
 
         void pause();
         bool paused() const;

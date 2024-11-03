@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QSettings>
+
+#include "application.h"
 #include "chromasound/emu/audio_output.h"
 #include "qcsplay.h"
 

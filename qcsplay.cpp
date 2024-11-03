@@ -1,7 +1,7 @@
 #include "qcsplay.h"
 
 const QString QCSPlay::Organization = "Nir Jacobson";
-const QString QCSPlay::Application = "Chromasound Studio";
+const QString QCSPlay::Application = "qcsplay";
 const QString QCSPlay::SettingsFile = "settings.ini";
 const QString QCSPlay::EmulatorOutputDeviceKey = "emuOutputDevice";
 const QString QCSPlay::OutputDeviceKey = "outputDevice";

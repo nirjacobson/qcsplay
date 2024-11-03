@@ -101,3 +101,16 @@ void Application::showWindow()
     _player->show();
 }
 
+
+
+bool Application::isRaspberryPi()
+{
+    QProcess process;
+    process.start("grep", QStringList() << "Model" << "/proc/cpuinfo");
+    process.waitForFinished(-1);
+
+    QString output = process.readAllStandardOutput();
+
+    return output.contains("Raspberry Pi");
+}
+
