@@ -16,12 +16,12 @@ BEGIN
         BLOCK "000004b0"
         BEGIN
             VALUE "CompanyName", "Nir Jacobson"
-            VALUE "FileDescription", "Chromasound Studio"
+            VALUE "FileDescription", "qcsplay"
             VALUE "FileVersion", "1.0.0.0"
             VALUE "LegalCopyright", "Copyright (C) 2024 Nir Jacobson"
-            VALUE "InternalName", "chromasound-studio"
-            VALUE "OriginalFilename", "ChromasoundStudio.exe"
-            VALUE "ProductName", "Chromasound Studio"
+            VALUE "InternalName", "qcsplay"
+            VALUE "OriginalFilename", "qcsplay.exe"
+            VALUE "ProductName", "qcsplay"
             VALUE "ProductVersion", "1.0.0.0"
         END
     END
