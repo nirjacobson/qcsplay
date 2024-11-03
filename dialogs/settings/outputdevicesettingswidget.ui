@@ -30,12 +30,12 @@
     <widget class="QComboBox" name="outputDeviceComboBox">
      <item>
       <property name="text">
-       <string>Chromasound Direct</string>
+       <string>Emulator</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Emulator</string>
+       <string>Chromasound Direct</string>
       </property>
      </item>
     </widget>

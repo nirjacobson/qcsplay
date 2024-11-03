@@ -13,7 +13,7 @@ OutputDeviceSettingsWidget::OutputDeviceSettingsWidget(QWidget *parent)
     QSettings settings(QCSPlay::Organization, QCSPlay::Application);
 #endif
 
-    ui->outputDeviceComboBox->setCurrentIndex(settings.value(QCSPlay::OutputDeviceKey, QCSPlay::Emulator).toString() == QCSPlay::Emulator);
+    ui->outputDeviceComboBox->setCurrentIndex(settings.value(QCSPlay::OutputDeviceKey, QCSPlay::Emulator).toString() == QCSPlay::ChromasoundDirect);
 
     connect(ui->outputDeviceComboBox, &QComboBox::currentIndexChanged, this, &OutputDeviceSettingsWidget::changed);
 }
