@@ -31,7 +31,7 @@ void SettingsDialog::accepted()
     QSettings settings(QCSPlay::Organization, QCSPlay::Application);
 #endif
 
-    settings.setValue(QCSPlay::OutputDeviceKey, ui->outputDeviceWidget->outputDeviceIndex() == 0 ? QCSPlay::ChromasoundDirect : QCSPlay::Emulator);
+    settings.setValue(QCSPlay::OutputDeviceKey, ui->outputDeviceWidget->outputDeviceIndex() == 0 ? QCSPlay::Emulator : QCSPlay::ChromasoundDirect);
     settings.setValue(QCSPlay::EqualizerBassKey, ui->emulationSettingsWidget->bass());
     settings.setValue(QCSPlay::EqualizerTrebleKey, ui->emulationSettingsWidget->treble());
     settings.setValue(QCSPlay::AudioBufferSizeKey, ui->emulationSettingsWidget->audioBufferSize());
@@ -45,7 +45,11 @@ void SettingsDialog::accepted()
 
 void SettingsDialog::chromasoundChanged()
 {
-    bool showEmuSettings = ui->outputDeviceWidget->outputDeviceIndex() == 1;
+    bool showEmuSettings = ui->outputDeviceWidget->outputDeviceIndex() == 0;
     ui->emuOutputDeviceGroupBox->setVisible(showEmuSettings);
     ui->emuAdjustmentsGroupBox->setVisible(showEmuSettings);
+
+    if (showEmuSettings) {
+        ui->emulatorOutputDeviceWidget->doUpdate();
+    }
 }
