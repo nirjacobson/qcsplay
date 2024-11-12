@@ -7,6 +7,7 @@
 #include <string.h>
 #include <vector>
 #include <algorithm>
+#include <sstream>
 
 #include "consumer.h"
 
@@ -23,6 +24,7 @@ class AudioOutput : public Consumer<T> {
 
         std::vector<std::string> devices();
         int defaultDeviceIndex();
+        std::string defaultDevice();
 
         void start();
         void stop();
@@ -60,6 +62,12 @@ AudioOutput<T>::AudioOutput()
     , _running(false)
 {
 
+}
+
+template <typename T>
+bool AudioOutput<T>::isInited()
+{
+    return _inited;
 }
 
 template <typename T>
@@ -131,12 +139,34 @@ std::vector<std::string> AudioOutput<T>::devices() {
         devices.push_back(info->name);
     }
 
+    for (int i = 0; i < count; i++) {
+        int devCount = 1;
+        for (int j = i + 1; j < count; j++) {
+            if (devices[i].starts_with(devices[j])) {
+                if (devCount == 1) {
+                    std::stringstream ss;
+                    ss << devices[i] << " #" << devCount++;
+                    devices[i] = ss.str();
+                }
+
+                std::stringstream ss;
+                ss << devices[j] << " #" << devCount++;
+                devices[j] = ss.str();
+            }
+        }
+    }
+
     return devices;
 }
 
 template <typename T>
 int AudioOutput<T>::defaultDeviceIndex() {
     return Pa_GetDefaultOutputDevice();
+}
+
+template <typename T>
+std::string AudioOutput<T>::defaultDevice() {
+    return devices()[defaultDeviceIndex()];
 }
 
 template <typename T>
@@ -205,12 +235,6 @@ void AudioOutput<T>::restart() {
     if (started) {
         start();
     }
-}
-
-template<typename T>
-inline bool AudioOutput<T>::isInited()
-{
-    return _inited;
 }
 
 template <typename T>
