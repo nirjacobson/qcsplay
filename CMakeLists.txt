@@ -8,7 +8,6 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(LINUX_ARM OFF)
 set(WIN32_ARM OFF)
 
 find_package(QT NAMES Qt6 REQUIRED COMPONENTS Widgets)
@@ -27,8 +26,6 @@ if (WIN32)
 elseif (APPLE)
     include_directories("/System/Volumes/Data/usr/local/include"
                         "/System/Volumes/Data/usr/local/include/libbson-1.0")
-elseif (NOT LINUX_ARM)
-    include_directories("/usr/x86_64-pc-linux-gnu/usr/lib/gcc/x86_64-pc-linux-gnu/14/include/g++-v14/")
 endif()
 
 
@@ -175,15 +172,9 @@ else()
 endif()
 
 if (LINUX)
-    if (LINUX_ARM)
-        target_link_libraries(qcsplay PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
-                                                    /usr/lib64/libportaudio.so
-                                                    /usr/lib64/libz.so)
-    else()
-        target_link_libraries(qcsplay PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
-                                                    /usr/x86_64-pc-linux-gnu/usr/lib64/libportaudio.so
-                                                    /usr/x86_64-pc-linux-gnu/usr/lib64/libz.so)
-    endif()
+    target_link_libraries(qcsplay PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
+                                                /usr/lib64/libportaudio.so
+                                                /usr/lib64/libz.so)
 elseif (WIN32)
     if (WIN32_ARM)
         target_link_libraries(qcsplay PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
