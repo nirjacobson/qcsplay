@@ -91,7 +91,7 @@ void Chromasound_Emu::setBufferSizes()
     QSettings settings(QCSPlay::Organization, QCSPlay::Application);
 #endif
 
-    int audioBufferSize = settings.value(QCSPlay::AudioBufferSizeKey, 256).toInt();
+    int audioBufferSize = settings.value(QCSPlay::AudioBufferSizeKey, 1024).toInt();
     int readBufferSize = settings.value(QCSPlay::ReadBufferSizeKey, 1).toInt();
 
     _framesPerReadBuffer = audioBufferSize * readBufferSize;

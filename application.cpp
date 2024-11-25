@@ -58,7 +58,7 @@ void Application::setupChromasound()
     QSettings settings(QCSPlay::Organization, QCSPlay::Application);
 #endif
 
-    int audioBufferSize = settings.value(QCSPlay::AudioBufferSizeKey, 256).toInt();
+    int audioBufferSize = settings.value(QCSPlay::AudioBufferSizeKey, 1024).toInt();
     int readBufferSize = settings.value(QCSPlay::ReadBufferSizeKey, 1).toInt();
 
     bool emu = settings.value(QCSPlay::OutputDeviceKey, QCSPlay::Emulator).toString() == QCSPlay::Emulator;

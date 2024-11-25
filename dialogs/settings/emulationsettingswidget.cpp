@@ -14,7 +14,7 @@ EmulationSettingsWidget::EmulationSettingsWidget(QWidget *parent) :
 #endif
     ui->bassSpinBox->setValue(settings.value(QCSPlay::EqualizerBassKey, 0).toInt());
     ui->trebleSpinBox->setValue(settings.value(QCSPlay::EqualizerTrebleKey, 0).toInt());
-    ui->audioBufferSizeSpinBox->setValue(settings.value(QCSPlay::AudioBufferSizeKey, 256).toInt());
+    ui->audioBufferSizeSpinBox->setValue(settings.value(QCSPlay::AudioBufferSizeKey, 1024).toInt());
     ui->readBufferSizeSpinBox->setValue(settings.value(QCSPlay::ReadBufferSizeKey, 1).toInt());
 }
 
