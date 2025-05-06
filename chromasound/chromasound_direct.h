@@ -27,8 +27,6 @@ class Chromasound_Direct : public Chromasound
     private:
         int _gpioFd;
 
-        QMutex _mutex;
-
         VGMPlayer* _vgmPlayer;
 
         long _timeOffset;

@@ -19,8 +19,6 @@ class Chromasound_Emu : public Chromasound, public Producer<int16_t>
         Chromasound_Emu();
         ~Chromasound_Emu();
 
-        void setPCMData(const char* path);
-
     private:
         class Player;
 
@@ -38,8 +36,6 @@ class Chromasound_Emu : public Chromasound, public Producer<int16_t>
         bool _paused;
 
         track_info_t _info;
-
-        QMutex _mutex;
 
         QMutex _loadLock;
 

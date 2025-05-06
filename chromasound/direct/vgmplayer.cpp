@@ -249,6 +249,8 @@ void VGMPlayer::runPlayback()
         }
     }
 
+    spi_write_wait(DISCRETE_PCM);
+
     _timer.start();
     _playing = true;
 
