@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Icon=qcsplay
+Exec=qcsplay
+StartupWMClass=qcsplay
+Terminal=false
+Categories=AudioVideo;Audio;Player;X-Chromasound;
+
+Name=Qcsplay
+GenericName=Chromasound-compatible VGM player
+Comment=Chromasound-compatible VGM player
